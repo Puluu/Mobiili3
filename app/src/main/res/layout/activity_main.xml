@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:text="ADD TIME" />
 
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"

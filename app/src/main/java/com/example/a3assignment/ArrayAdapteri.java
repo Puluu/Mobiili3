@@ -30,18 +30,26 @@ public class ArrayAdapteri extends ArrayAdapter<Date> {
         this.context = context;
         this.datalista = objects;
 
+
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         View v = layoutInflater.inflate(R.layout.listatemplate, parent, false);
-        LinearLayout linearLayout = (LinearLayout)v;
+        LinearLayout linearLayout = (LinearLayout) v;
         TextView textView = v.findViewById(R.id.textView);
         textView.setText(DateFormat.getDateInstance().format(datalista.get(position)));
         Button button = v.findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datalista.remove(position);
+                notifyDataSetChanged();
+            }
+        });
 
         return linearLayout;
     }
